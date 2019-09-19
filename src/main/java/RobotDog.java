@@ -1,11 +1,10 @@
 
-public class RobotDog extends RobotPet implements WalkDog{
+public class RobotDog extends RobotPet{
 	
 	private int energy;
 
-	public RobotDog(String petName, String description, int petHealth, int oil, int energy) {
-		super(petName, description, petHealth, oil);
-		this.energy = 10;
+	public RobotDog(String petName, String description, int health, int happiness, int oil, int maintenance) {
+		super(petName, description, health, happiness, oil, maintenance);
 		
 	}
 	public RobotDog(String petName, String description) {

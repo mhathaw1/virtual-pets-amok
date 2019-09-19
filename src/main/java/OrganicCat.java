@@ -1,16 +1,14 @@
 
 public class OrganicCat extends OrganicPet implements CleanLitter{
-
-	private int litter;
+	
+	public OrganicCat(String petName, String description, int health, int happiness, int hunger, int thirst, int needToUseIt) {
+		super(petName, description, health, happiness, hunger, thirst, needToUseIt);
+	}
 	
 	public OrganicCat(String petName, String description) {
 		super(petName, description);
 	}
 	
-	public OrganicCat(String petName, String description, int petHealth, int hunger, int thirst, int litter) {
-		super(petName, description, petHealth, hunger, thirst);
-		this.litter = 10;
-	}
 	
 	@Override
 	public int getLitter() {
@@ -22,5 +20,8 @@ public class OrganicCat extends OrganicPet implements CleanLitter{
 		litter -= 5;
 	}
 
-
+	public void dirtyLitter() {
+		litter += 1;
+	}
 }
+

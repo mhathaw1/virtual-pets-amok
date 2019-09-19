@@ -1,18 +1,15 @@
 
-public class OrganicDog extends OrganicPet implements WalkDog{
+public class OrganicDog extends OrganicPet{
 	
 	private int cageGrossness;
-	private int energy;
 
+	public OrganicDog(String petName, String description, int health, int happiness, int hunger, int thirst, int needToUseIt, int cageGrossness) {
+		super(petName, description, health, hunger, thirst, needToUseIt, cageGrossness);
+	}
 	public OrganicDog(String petName, String description) {
 		super(petName, description);
 	}
 	
-	public OrganicDog(String petName, String description, int petHealth, int hunger, int thirst, int cageGrossness, int energy) {
-		super(petName, description, petHealth, hunger, thirst);
-		this.cageGrossness = 10;
-		this.energy = 10;
-	}
 
 	public int getCageGrossness() {
 		return cageGrossness;
@@ -22,13 +19,13 @@ public class OrganicDog extends OrganicPet implements WalkDog{
 		cageGrossness -= 5;
 	}
 
+	public void dirtyCage() {
+		cageGrossness += 1;
+	}
+	
 	@Override
 	public void walkDog() {
-		energy -= 5;
+	happiness += 5;
+	needToUseIt = 0;
 	}
-
-	public int getEnergy() {
-		return energy;
-	}
-
 }

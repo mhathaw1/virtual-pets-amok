@@ -1,16 +1,8 @@
 
 public abstract class OrganicPet extends VirtualPet2 {
 
-	private String petName;
-	private int health;
-	private int hunger;
-	private int thirst;
-
-	public OrganicPet(String petName, String description, int petHealth, int hunger, int thirst) {
-		super(petName, description);
-		this.petHealth = 10;
-		this.hunger = 10;
-		this.thirst = 10;
+	public OrganicPet(String petName, String description, int health, int happiness, int hunger, int thirst, int needToUseIt) {
+		super(petName, description, health, happiness);
 	}
 	
 	public OrganicPet(String petName, String description) {
@@ -25,21 +17,20 @@ public abstract class OrganicPet extends VirtualPet2 {
 		return health;
 	}
 	
-	public Object getHunger() {
+	public int getHunger() {
 		return hunger;
 	}
 
-	public Object getThirst() {
+	public int getThirst() {
 		return thirst;
 	}
 
-	public void feed() {
-		hunger -= 5;
+	public void organicTick() {
+		hunger += 1;
+		thirst += 1;
+		needToUseIt += 1;
 	}
-	
-	public void water() {
-		thirst -= 5;
-	}
-
 
 }
+
+

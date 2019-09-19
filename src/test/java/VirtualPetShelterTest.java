@@ -7,6 +7,8 @@ import java.util.Collection;
 
 import org.junit.Test;
 
+import virtualPetShelter.VirtualPet;
+
 public class VirtualPetShelterTest {
 
 	VirtualPetShelter2 testMenagerie = new VirtualPetShelter2();
@@ -22,12 +24,14 @@ public class VirtualPetShelterTest {
 	
 	@Test
 	public void shouldBeAbleToAddMultipleOrganicDogs() {
-		VirtualPet2 organicDog1 = new OrganicDog("Name1", "Description1");
-		VirtualPet2 organicDog2 = new OrganicDog("Name2", "Description2");
-		testMenagerie.admitPet(organicDog1);
-		testMenagerie.admitPet(organicDog2);
+		VirtualPet2 pet = new RobotCat("Name1", "Description1");
+		testMenagerie.admitPet(pet);
+		VirtualPet2 pet2 = new RobotCat("Name2", "Description2");
+		testMenagerie.admitPet(pet2);
 		Collection<VirtualPet2> check = testMenagerie.getAllPets();
-		assertThat(check, contains(organicDog1, organicDog2));
+		assertThat(check, containsInAnyOrder(pet, pet2));
+		
+		
 	}
 }
 
