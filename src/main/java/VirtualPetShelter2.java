@@ -19,7 +19,7 @@ public class VirtualPetShelter2 {
 	public String listNamesAndDescriptions() {
 		String namesAndDescriptions = "";
 		for (VirtualPet2 pet : getAllPets()) {
-			namesAndDescriptions += "\t" + pet.getPetName() + "\t" + pet.getDescription() + "\n";
+			namesAndDescriptions += "\t" + pet.getPetName() + ": " + pet.getDescription() + "\n";
 		}
 		return namesAndDescriptions;
 	}
@@ -29,10 +29,16 @@ public class VirtualPetShelter2 {
 			pet.getStatus();
 			if (pet instanceof OrganicDog) {
 				System.out.println(
-						"    Amount of grossness in " + pet.getPetName() + "'s cage: " + pet.cageGrossness);
+						"    Cage Grossness:" + ((OrganicDog) pet).getCageGrossness());
 			}
 			if (pet instanceof OrganicCat) {
-				System.out.println("    Amount of grossness in the litterbox: " + pet.litter);
+				System.out.println("    Litter Grossness: " + pet.litter);
+			}
+			if (pet instanceof RobotDog) {
+				System.out.println("    Need for oil: " + pet.getOil() + " | Needs maintenance: " + pet.maintenance);
+			}
+			if (pet instanceof RobotCat) {
+				System.out.println("    Need for oil: " + pet.getOil() + " | Needs maintenance: " + pet.maintenance);
 			}
 		}
 	}
@@ -50,14 +56,14 @@ public class VirtualPetShelter2 {
 		allPets.put(pet.getPetName(), pet);
 	}
 
-	public void adoptPet(VirtualPet2 pet) {   //or try String petName?
-		allPets.remove(pet.getPetName(), pet); //or try pets.remove(petName);
+	public void adoptPet(VirtualPet2 pet) {  
+		allPets.remove(pet.getPetName(), pet); 
 	}
 	
 	public void playWithOnePet(String petName) {
-		getPetName(petName).playWithPet();
+		allPets.get(petName).playWithPet();
 	}
-		
+	
 	public void feedPets() {
 		for (VirtualPet2 pet : allPets.values()) {
 			if (pet instanceof OrganicPet) {
@@ -139,35 +145,3 @@ public class VirtualPetShelter2 {
 		}
 	}
 }
-		
-		
-		
-	
-	
-
-
-
-
-
-	//if (pet.amountOfWasteInLitterBox >= 20) {
-	//	if (pet instanceof OrganicCat) {
-	//		System.out.println(
-	//				"The communal litter box is overflowing with excrement. You'd better clean it soon!"
-	//						+ "\nThe health of your organic cat(s) will decrease at a faster pace until the box is cleaned.");
-	//		pet.health -= 1;
-	//	}
-	//}
-	//if (pet.amountOfWasteInCage >= 20) {
-	//	if (pet instanceof OrganicDog) {
-	//		System.out.println(
-	//				pet.getPetName() + "'s cage has a lot of waste in it. You'd better clean the cages soon!"
-	//						+ "\nThe health of " + pet.getPetName()
-	//						+ " will decrease at a faster pace until the cages are cleaned.");
-	//		pet.health -= 1;
-	//	}
-	//}
-	//if (pet.getHealth() <= 0) {
-	//	System.out.println("Oh, no! " + pet.getPetName() + " has died because you let its health reach zero."
-	//			+ "\nGame over!");
-	//	System.exit(0);
-	//}

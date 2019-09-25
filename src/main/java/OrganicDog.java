@@ -1,5 +1,5 @@
 
-public class OrganicDog extends OrganicPet{
+public class OrganicDog extends OrganicPet implements WalkDog{
 	
 	private int cageGrossness;
 
@@ -16,7 +16,7 @@ public class OrganicDog extends OrganicPet{
 	}
 
 	public void cleanCage() {
-		cageGrossness -= 5;
+		cageGrossness = 0;
 	}
 
 	public void dirtyCage() {
@@ -27,5 +27,12 @@ public class OrganicDog extends OrganicPet{
 	public void walkDog() {
 	happiness += 5;
 	needToUseIt = 0;
+	}
+	@Override
+	public void singleTick() {
+		happiness -= 1;
+		health -= 1;
+		litter += 1;
+		cageGrossness += 1;
 	}
 }
